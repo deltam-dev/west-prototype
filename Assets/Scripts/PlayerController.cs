@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection;
     Vector2 mousePosition;
     
+    private void Start() {
+        Physics2D.IgnoreLayerCollision(6, 7);
+    }
+
     void Update()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
