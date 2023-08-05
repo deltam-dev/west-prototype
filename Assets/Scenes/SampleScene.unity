@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989d4aea2d2ea2a4a97cc1bc808b148a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 6
   rb: {fileID: 129343850}
   weapon: {fileID: 616562460}
   rotatePlayer: 1
@@ -453,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6137582360690681586, guid: 24c122853c1ef8c43a1b2c8d1807d738, type: 3}
   firePoint: {fileID: 1256991550}
-  fireForce: 3
+  fireForce: 25
 --- !u!212 &616562461
 SpriteRenderer:
   m_ObjectHideFlags: 0

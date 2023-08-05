@@ -12,8 +12,12 @@ public class PlayerController : MonoBehaviour
 
     Vector2 moveDirection;
     Vector2 mousePosition;
+    Vector2 cameraPosition;
     
     private void Start() {
+        // 6 = Player Layer
+        // 7 = Player Ammo Layer
+        // Ignore collisions of both GameObjects
         Physics2D.IgnoreLayerCollision(6, 7);
     }
 
@@ -30,6 +34,9 @@ public class PlayerController : MonoBehaviour
         Vector3 screenPoint = Input.mousePosition;
         screenPoint.z = - Camera.main.transform.position.z;
         mousePosition = Camera.main.ScreenToWorldPoint(screenPoint);
+
+        float distance = Vector2.Distance(rb.position, mousePosition);
+        cameraPosition = Vector2.MoveTowards(rb.position, mousePosition, (distance / 4));
     }  
 
     private void FixedUpdate()
@@ -42,10 +49,14 @@ public class PlayerController : MonoBehaviour
             rb.rotation = aimAngle;
         }  
 
+        // Currently not working, wanna try to move only weapon and not player
         if (rotateWeapon) {
             Vector2 aimDirection = mousePosition - rb.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             weapon.GetComponent<Transform>().rotation = new Quaternion(aimAngle, 0, 0, 0);
-        }  
+        } 
+
+        // moves the camera
+        Camera.main.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, -10); 
     }    
 }
