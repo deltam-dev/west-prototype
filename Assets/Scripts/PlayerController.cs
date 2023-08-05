@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(screenPoint);
 
         float distance = Vector2.Distance(rb.position, mousePosition);
-        cameraPosition = Vector2.MoveTowards(rb.position, mousePosition, (distance / 4));
+        cameraPosition = Vector2.MoveTowards(rb.position, mousePosition, (distance / 3));
     }  
 
     private void FixedUpdate()
