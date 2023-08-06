@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public WeaponController weapon;
     public bool rotatePlayer = false;
@@ -13,12 +12,16 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection;
     Vector2 mousePosition;
     Vector2 cameraPosition;
+
+    float movementSpeed = 5f;
     
     private void Start() {
         // 6 = Player Layer
         // 7 = Player Ammo Layer
         // Ignore collisions of both GameObjects
         Physics2D.IgnoreLayerCollision(6, 7);
+
+        movementSpeed = GameState.movementSpeed;
     }
 
     void Update()
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
         
         if (rotatePlayer) {
             Vector2 aimDirection = mousePosition - rb.position;
