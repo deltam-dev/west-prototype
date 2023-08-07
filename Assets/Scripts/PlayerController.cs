@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     // for weapon rotation, also move the pivot point to bottom of weapon
     public GameObject weapon;
+
     // reference for weapon script in order to fire
     public WeaponController weaponController;
 
@@ -93,6 +94,10 @@ public class PlayerController : MonoBehaviour
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             rb.rotation = aimAngle;
         }
+        else
+        {
+            rb.rotation =  0f;
+        }
 
         // Currently working
         if (rotateWeapon)
@@ -106,7 +111,7 @@ public class PlayerController : MonoBehaviour
         // moves the camera
         Camera.main.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, -10);
     }
-
+                   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
