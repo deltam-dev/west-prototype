@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class GameState : MonoBehaviour
 {
     // Global states
-    public static int health = 10;
-    public static float movementSpeed = 5f;
+    public static int health;
+    public static float movementSpeed;
 
     // Modifiers
-    public int _movementSpeed;
+    public int _health = 10;
+    public float _movementSpeed = 5f;
 
-    // Start is called before the first frame update
     void Start()
     {
+        health = _health;
         movementSpeed = _movementSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public static void takeDamage() {
+        health -= 1;
     }
+
 }

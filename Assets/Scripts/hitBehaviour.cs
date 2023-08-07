@@ -3,19 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class hitBehaviour : StateMachineBehaviour
+public class HitBehaviour : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    override public void OnStateEnter(
+        Animator animator,
+        AnimatorStateInfo stateInfo,
+        int layerIndex
+    )
     {
-        //    Aqui restaria la vida
+        // Aqui restaria la vida
         Debug.Log("Ahora deberia restar vida");
+        GameState.takeDamage();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    
+    //
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -27,7 +32,6 @@ public class hitBehaviour : StateMachineBehaviour
             //Aqui se muere
             Debug.Log("Muerte");
         }
-
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
