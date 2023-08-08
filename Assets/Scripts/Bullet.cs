@@ -11,6 +11,12 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Player") {
             
         } else {
+            
+            if (collision.gameObject.tag == "Enemy")
+            {
+                //iniciar la animacion de muerte
+                collision.gameObject.GetComponent<Animator>().SetTrigger("isDead");
+            }
             Destroy(gameObject);
         }
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

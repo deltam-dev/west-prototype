@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     // reference for weapon script in order to fire
     public WeaponController weaponController;
 
+    // reference for weapon script in order to spawn enemies
+    public EnemySpawn enemySpawn;
+
     //for animator
     public Animator animator;
     public bool rotatePlayer = false;
@@ -90,6 +93,12 @@ public class PlayerController : MonoBehaviour
         {
             GameState.Reload();
             animator.SetBool("isDead", false);
+        }
+
+        // instanciar enemigos con T
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            enemySpawn.spawn();
         }
     }
 
