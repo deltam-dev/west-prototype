@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HitBehaviour : StateMachineBehaviour
 {
+     
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(
         Animator animator,
@@ -27,10 +29,12 @@ public class HitBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //aqui va lo del sistema de vida
-        if (animator.GetBool("death"))
+        if (GameState.health <= 0)
         {
             //Aqui se muere
             Debug.Log("Muerte");
+            animator.SetTrigger("death");
+            animator.SetBool("isDead", true);
         }
     }
 
