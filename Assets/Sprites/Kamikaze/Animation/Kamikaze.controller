@@ -57,7 +57,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: atack
     m_Mirror: 0
-  m_BlendParameter: atack
+  m_BlendParameter: walk
   m_BlendParameterY: atack
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -344,13 +344,13 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4664303878334481016}
-    m_Position: {x: 350, y: 20, z: 0}
+    m_Position: {x: 330, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5431422027352169868}
     m_Position: {x: 70, y: 20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1865185100108912888}
-    m_Position: {x: 340, y: -100, z: 0}
+    m_Position: {x: 330, y: -100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8693344660653081029}
     m_Position: {x: 330, y: 210, z: 0}
