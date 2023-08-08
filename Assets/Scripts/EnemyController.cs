@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    float speed = 1f;
+    //bool 
     void Start()
     {
-        
+        //GameState.health = hea;
     }
 
     // Update is called once per frame

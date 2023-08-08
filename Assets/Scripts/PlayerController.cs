@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -82,11 +83,26 @@ public class PlayerController : MonoBehaviour
 
         float distance = Vector2.Distance(rb.position, mousePosition);
         cameraPosition = Vector2.MoveTowards(rb.position, mousePosition, (distance / 3));
+
+
+        // Restart caracter with R s
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameState.Reload();
+            animator.SetBool("isDead", false);
+        }
     }
 
     private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+    {   
+        //if is not dead(mejor si va en el gamestate)
+        if (!animator.GetBool("isDead")) {
+            rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+        }else
+        {
+            rb.velocity = Vector2.zero;
+        }
+        
 
         if (rotatePlayer)
         {
@@ -115,13 +131,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
-        if (collision.name.Equals("Hit"))
+        if (collision.gameObject.tag == "Enemy")
         {
             animator.SetTrigger("hit");
-        }
-        else if (collision.name.Equals("Death"))
-        {
-            animator.SetTrigger("death");
         }
     }
 }

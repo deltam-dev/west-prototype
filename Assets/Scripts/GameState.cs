@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class GameState : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class GameState : MonoBehaviour
     public static float movementSpeed;
 
     // Modifiers
-    public int _health = 10;
+    //le cambie a static para usarla en reload(pero si rompe algo hay que cambiar)
+    public static int _health = 10;
     public float _movementSpeed = 5f;
 
     // UI Elements
@@ -29,6 +31,11 @@ public class GameState : MonoBehaviour
 
     public static void takeDamage() {
         health -= 1;
+    }
+    //Restart life
+    public static void Reload()
+    {
+        health = _health;
     }
 
 }
