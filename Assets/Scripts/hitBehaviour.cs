@@ -16,7 +16,7 @@ public class HitBehaviour : StateMachineBehaviour
     {
         // Aqui restaria la vida
         Debug.Log("Ahora deberia restar vida");
-        GameState.takeDamage();
+        GameState.Instance.takeDamage();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,7 +29,7 @@ public class HitBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //aqui va lo del sistema de vida
-        if (GameState.health <= 0)
+        if (GameState.Instance.health <= 0)
         {
             //Aqui se muere
             Debug.Log("Muerte");

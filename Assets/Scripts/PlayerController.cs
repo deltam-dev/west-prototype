@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Get stats from GameState
-        movementSpeed = GameState.movementSpeed;
+        movementSpeed = GameState.Instance.movementSpeed;
     }
 
     void Update()
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         // Restart caracter with R s
         if (Input.GetKeyDown(KeyCode.R))
         {
-            GameState.Reload();
+            GameState.Instance.refillHealth();
             animator.SetBool("isDead", false);
         }
 

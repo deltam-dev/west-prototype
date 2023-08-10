@@ -2,40 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class GameState : MonoBehaviour
 {
+    public static GameState Instance { get; private set; }
+    
     // Global states
-    public static int health;
-    public static float movementSpeed;
+    public int maxHealth;
+    public int health;
+    public float movementSpeed;
 
-    // Modifiers
-    //le cambie a static para usarla en reload(pero si rompe algo hay que cambiar)
-    public static int _health = 10;
-    public float _movementSpeed = 5f;
+    HealthBar hb;
 
-    // UI Elements
-    public TMP_Text statsUI;
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
-        health = _health;
-        movementSpeed = _movementSpeed;
+        hb = GetComponent<HealthBar>();    
     }
 
-    void Update()
+    public void takeDamage()
     {
-        statsUI.text = "Salud: " + health;
+        health -= 10;
+        hb.setHealth(health);
     }
 
-    public static void takeDamage() {
-        health -= 1;
-    }
-    //Restart life
-    public static void Reload()
+    // Restart life
+    public void refillHealth()
     {
-        health = _health;
+        health = maxHealth;
     }
-
 }
