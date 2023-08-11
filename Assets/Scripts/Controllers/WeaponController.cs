@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     public float fireForce = 20f;
 
     public void fire()
-    {
+    {   
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);      
     }

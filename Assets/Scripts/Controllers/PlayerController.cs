@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public WeaponController weaponController;
 
     // reference for weapon script in order to spawn enemies
-    public EnemySpawn enemySpawn;
+    public EnemySpawnController enemySpawn;
 
     //for animator
     public Animator animator;
@@ -99,6 +99,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             enemySpawn.spawn();
+        }
+
+        // add relic, only for testing
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            GameState.Instance.addRelic();
         }
     }
 
