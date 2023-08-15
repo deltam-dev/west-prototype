@@ -70,3 +70,15 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+ProjectSettings/boot.config
+ProjectSettings/ProjectVersion.txt
+.vscode/settings.json
+.vscode/launch.json
+.vscode/extensions.json
+Assets/Sprites/temp/black-crosshair.ase.meta
+Assets/Sprites/temp/column.ase.meta
+Assets/Sprites/temp/white-crosshair.ase.meta
+Packages/manifest.json
+Packages/packages-lock.json
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/TimelineSettings.asset
