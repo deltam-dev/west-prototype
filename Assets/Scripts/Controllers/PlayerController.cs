@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         // 6 = Player Layer
         // 7 = Player Ammo Layer
+        // 10 = bullet
         // Ignore collisions of both GameObjects
         Physics2D.IgnoreLayerCollision(6, 7);
         animator = GetComponent<Animator>();
@@ -109,15 +110,17 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {   
+    {
         //if is not dead(mejor si va en el gamestate)
-        if (!animator.GetBool("isDead")) {
+        if (!animator.GetBool("isDead"))
+        {
             rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
-        }else
+        }
+        else
         {
             rb.velocity = Vector2.zero;
         }
-        
+
 
         if (rotatePlayer)
         {
@@ -127,7 +130,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.rotation =  0f;
+            rb.rotation = 0f;
         }
 
         // Currently working
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
         // moves the camera
         Camera.main.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, -10);
     }
-                   
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);

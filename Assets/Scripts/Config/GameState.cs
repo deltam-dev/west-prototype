@@ -6,6 +6,9 @@ using TMPro;
 
 public class GameState : MonoBehaviour
 {
+
+    public bool canShoot = true;  // Indica si el jugador puede disparar
+    public float timeSinceLastShot;  // Tiempo desde el último disparo
     public static GameState Instance { get; private set; }
 
     // Global states
@@ -19,6 +22,8 @@ public class GameState : MonoBehaviour
     HUDController hud;
     ArrayList relics;
 
+    FireRatioBar fireRatioBar;
+
     private void Awake()
     {
         Instance = this;
@@ -31,15 +36,19 @@ public class GameState : MonoBehaviour
 
         hb = GetComponent<HealthBar>();
         hud = GetComponent<HUDController>();
-
+        fireRatioBar = GetComponent<FireRatioBar>();
         relics = new ArrayList();
     }
 
     void Update()
     {
-        
+
     }
 
+    public FireRatioBar GetFireRatioBar()
+    {
+        return fireRatioBar;
+    }
     public void takeDamage()
     {
         health -= 10;
@@ -56,11 +65,13 @@ public class GameState : MonoBehaviour
     {
         if (relics.Count < maxRelics)
         {
-            
+
             Relic relic = new Relic("Relic " + relics.Count);
             relics.Add(relic);
             GameObject relicGO = hud.addRelic(relics.Count);
             relicGO.GetComponent<RelicController>().setRelicData(relic);
-        } 
+        }
     }
+
+
 }
