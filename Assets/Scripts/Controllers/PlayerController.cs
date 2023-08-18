@@ -32,9 +32,10 @@ public class PlayerController : MonoBehaviour
     {
         // 6 = Player Layer
         // 7 = Player Ammo Layer
-        // 10 = bullet
+        // 10 = pet
         // Ignore collisions of both GameObjects
         Physics2D.IgnoreLayerCollision(6, 7);
+        Physics2D.IgnoreLayerCollision(6, 10);
         animator = GetComponent<Animator>();
 
         // Get stats from GameState
