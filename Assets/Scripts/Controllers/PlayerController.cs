@@ -97,6 +97,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isDead", false);
         }
 
+        // menu de pausa
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            UIManager.Instance.Pause();
+            
+        }
+
         // instanciar enemigos con T
         if (Input.GetKeyDown(KeyCode.T))
         {
