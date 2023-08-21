@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     private static UIManager _instance;
+    private bool estado = true;
 
     //CREAR EL SINGELTON
     public static UIManager Instance
@@ -52,10 +54,30 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(nombre);
     }
 
+    
     public void Pause()
     {
-        Time.timeScale = 0f;
+        GameObject canvasObject = GameObject.Find("CanvasController");
+        Transform canvasPause = canvasObject.transform.Find("CanvasPause");
 
+
+        if (canvasPause != null)
+        {
+            //si estdo es true se pausa 
+            if (estado)
+            {
+
+                canvasPause.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+                estado = !estado;
+            }
+            else
+            {
+                canvasPause.gameObject.SetActive(false);
+                Time.timeScale = 1.0f;
+                estado = !estado;
+            }
+        }
     }
 
 }
